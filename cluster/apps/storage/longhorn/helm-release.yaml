@@ -1,0 +1,42 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./chart/
+      version: 1.4.0-dev
+      sourceRef:
+        kind: GitRepository
+        name: longhorn-git
+        namespace: flux-system
+      interval: 15m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+  values:
+    persistence:
+      defaultClass: true
+    ingress:
+      enabled: true
+      ingressClassName: "nginx"
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt-production"
+        hajimari.io/enable: "true"
+        hajimari.io/appName: "Longhorn"
+        hajimari.io/icon: "database"
+        nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+      host: "longhorn.${SECRET_DOMAIN}"
+      path: /
+      tls: true
+      secureBackends: true
+      tlsSecret: "longhorn-tls"
+    enablePSP: false
