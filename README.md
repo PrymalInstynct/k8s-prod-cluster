@@ -450,6 +450,15 @@ Rancher's `local-path-provisioner` is a great start for storage but soon you mig
 - [csi-driver-nfs](https://github.com/kubernetes-csi/csi-driver-nfs)
 - [synology-csi](https://github.com/SynologyOpenSource/synology-csi)
 
+#### Remove Default `Local-Path-Provisioner` StorageClass
+
+```bash
+kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.21/deploy/local-path-storage.yaml
+kubectl delete configmap local-path-config -n kube-system
+kubectl delete serviceaccount local-path-provisioner-service-account -n kube-system
+kubectl delete deployment local-path-provisioner -n kube-system
+```
+
 ### 🔏 Authenticate Flux over SSH
 
 Authenticating Flux to your git repository has a couple benefits like using a private git repository and/or using the Flux [Image Automation Controllers](https://fluxcd.io/docs/components/image/).
@@ -529,6 +538,9 @@ The benefits of a public repository include:
 ## 👉 Troubleshooting
 
 Our [wiki](https://github.com/onedr0p/flux-cluster-template/wiki) (WIP, contributions welcome) is a good place to start troubleshooting issues. If that doesn't cover your issue, come join and say Hi in our community [Discord](https://discord.gg/k8s-at-home).
+
+### Etcd Troubleshooting
+[etdctl gist](https://gist.github.com/superseb/0c06164eef5a097c66e810fe91a9d408)
 
 ## ❔ What's next
 
