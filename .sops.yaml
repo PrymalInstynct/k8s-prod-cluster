@@ -10,3 +10,7 @@ creation_rules:
     key_groups:
       - age:
           - age1zvdg9nspexxpnt6c2h8mprq0y86jn4agz933z524egwumkr2rcmq806a2s
+  - path_regex: cluster/.*\.sops\.toml
+    key_groups:
+      - age:
+          - age1zvdg9nspexxpnt6c2h8mprq0y86jn4agz933z524egwumkr2rcmq806a2s
