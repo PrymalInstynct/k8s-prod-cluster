@@ -10,3 +10,4 @@ resources:
   - networking
   - storage
   - system-upgrade
+  - web-tools
