@@ -35,7 +35,7 @@ spec:
       limits:
         memory: 1336M
     serviceMonitor:
-      enabled: false
+      enabled: true
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
