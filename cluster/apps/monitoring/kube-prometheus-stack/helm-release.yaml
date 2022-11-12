@@ -188,7 +188,7 @@ spec:
       thanosService:
         enabled: true
       thanosServiceMonitor:
-        enabled: false
+        enabled: true
       thanosIngress:
         enabled: true
         pathType: Prefix
