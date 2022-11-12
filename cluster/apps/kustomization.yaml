@@ -8,6 +8,7 @@ resources:
   - flux-system
   - kube-system
   - kube-tools
+  - monitoring
   - networking
   - storage
   - system-upgrade
