@@ -6,6 +6,7 @@ resources:
   - bjw-s-charts.yaml
   - cloudnative-pg-charts.yaml
   - csi-driver-nfs-charts.yaml
+  - descheduler-charts.yaml
   - dysnix-charts.yaml
   - external-dns-charts.yaml
   - grafana-charts.yaml
