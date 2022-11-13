@@ -75,6 +75,8 @@ spec:
               s3: null
               endpoint: "http://scorpion.${SECRET_PRIVATE_DOMAIN}:9000"
               region: us-east-1
+              secretAccessKey: AWS_SECRET_ACCESS_KEY
+              accessKeyId: AWS_ACCESS_KEY_ID
               s3forcepathstyle: true
               insecure: true
           ring:
