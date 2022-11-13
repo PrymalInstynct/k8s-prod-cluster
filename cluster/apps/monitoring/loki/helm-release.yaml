@@ -76,15 +76,15 @@ spec:
               endpoint: "http://scorpion.${SECRET_PRIVATE_DOMAIN}:9000"
               region: us-east-1
               secretAccessKey:
-                valueFrom:
-                  secretKeyRef:
-                    name: loki-s3
-                    key: s3_access_id
+                - valueFrom:
+                    secretKeyRef:
+                      name: loki-s3
+                      key: s3_access_id
               accessKeyId:
-                valueFrom:
-                  secretKeyRef:
-                    name: loki-s3
-                    key: s3_secret_key
+                - valueFrom:
+                    secretKeyRef:
+                      name: loki-s3
+                      key: s3_secret_key
               s3forcepathstyle: true
               insecure: true
           ring:
