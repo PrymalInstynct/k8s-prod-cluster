@@ -5,6 +5,7 @@ resources:
   - authentication
   - databases
   - default
+  - downloaders
   - flux-system
   - kube-system
   - kube-tools
