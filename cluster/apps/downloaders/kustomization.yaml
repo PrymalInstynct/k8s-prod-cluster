@@ -4,5 +4,4 @@ kind: Kustomization
 namespace: downloaders
 resources:
   - namespace.yaml
-  - qbittorrent
   - qbittorrent-jobs
