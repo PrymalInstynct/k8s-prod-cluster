@@ -103,8 +103,8 @@ spec:
       incomplete:
         enabled: true
         type: emptyDir
-    nodeSelector:
-      node-role.kubernetes.io/control-plane: "false"
+    # nodeSelector:
+    #   node-role.kubernetes.io/control-plane: "false"
     resources:
       requests:
         cpu: 10m
