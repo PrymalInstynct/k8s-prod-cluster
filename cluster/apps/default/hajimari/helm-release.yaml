@@ -30,6 +30,7 @@ spec:
           - authentication
           - databases
           - default
+          - downloaders
           - kube-tools
           - longhorn-system
           - media-servers
