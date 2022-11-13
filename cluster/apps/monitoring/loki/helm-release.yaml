@@ -58,8 +58,12 @@ spec:
           storage:
             s3:
               s3: null
-              insecure: true
+              endpoint: "http://scorpion.${SECRET_PRIVATE_DOMAIN}:9000"
+              region: null
+              secretAccessKey: "${AWS_ACCESS_KEY_ID}"
+              accessKeyId: "${AWS_SECRET_ACCESS_KEY}"
               s3forcepathstyle: true
+              insecure: true
           ring:
             kvstore:
               store: memberlist

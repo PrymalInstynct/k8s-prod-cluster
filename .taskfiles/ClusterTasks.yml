@@ -75,6 +75,12 @@ tasks:
     cmds:
       - kubectl get ingress {{.CLI_ARGS | default "-A"}}
 
+  monitor:
+    desc: Monitor common resources that change during a commit
+    cmds:
+      - task: kustomizations
+      - task: helmreleases
+
   resources:
     desc: Gather common resources in your cluster, useful when asking for support
     cmds:
