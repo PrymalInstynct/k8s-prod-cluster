@@ -6,3 +6,4 @@ resources:
   - descheduler
   - kyverno
   - metrics-server
+  - node-feature-discovery
