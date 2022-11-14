@@ -34,7 +34,7 @@ spec:
       TZ: "${TIMEZONE}"
       PUSHOVER_DEBUG: "false"
       PUSHOVER_APP_URL: &host "radarr-hd.${SECRET_DOMAIN}"
-      RADARR__INSTANCE_NAME: Radarr
+      RADARR__INSTANCE_NAME: Radarr-HD
       RADARR__PORT: &port 80
       RADARR__APPLICATION_URL: "https://radarr-hd.${SECRET_DOMAIN}"
       RADARR__LOG_LEVEL: info
