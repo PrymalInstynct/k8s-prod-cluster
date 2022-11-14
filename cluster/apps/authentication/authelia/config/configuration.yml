@@ -17,7 +17,7 @@ access_control:
     - domain: ["grafana.${SECRET_DOMAIN}"]
       policy: bypass
     - domain: "*.${SECRET_DOMAIN}"
-      policy: two_factor
+      policy: bypass
       networks:
         - 10.0.0.0/8
     - domain: "*.${SECRET_DOMAIN}"
