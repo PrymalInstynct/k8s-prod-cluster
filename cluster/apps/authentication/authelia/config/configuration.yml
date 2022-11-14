@@ -12,19 +12,16 @@ session:
           port: 26379
 
 access_control:
-  default_policy: two_factor
-  networks:
-    - name: internal
-      networks: ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
+  default_policy: deny
   rules:
     - domain: ["grafana.${SECRET_DOMAIN}"]
       policy: bypass
-  #   - domain: ["navidrome.${SECRET_DOMAIN}"]
-  #     resources: ["^/rest.*$"]
-  #     policy: bypass
-  #   - domain: ["navidrome.${SECRET_DOMAIN}"]
-  #     resources: ["^/metrics.*$"]
-  #     policy: deny
+    - domain: "*.${SECRET_DOMAIN}"
+      policy: bypass
+      networks:
+        - 10.0.0.0/8
+    - domain: "*.${SECRET_DOMAIN}"
+      policy: two_factor
 
 identity_providers:
   oidc:
