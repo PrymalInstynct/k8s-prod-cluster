@@ -6,3 +6,4 @@ resources:
   - prowlarr
   - radarr-hd
   - radarr-uhd
+  - sonarr
