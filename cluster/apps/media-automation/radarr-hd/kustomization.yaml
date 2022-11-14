@@ -6,7 +6,7 @@ resources:
   - secret.sops.yaml
   - helm-release.yaml
 configMapGenerator:
-  - name: radarr-pushover
+  - name: radarr-hd-pushover
     files:
       - ./scripts/pushover-notify.sh
 generatorOptions:
