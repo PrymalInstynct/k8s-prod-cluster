@@ -33,6 +33,7 @@ spec:
           - downloaders
           - kube-tools
           - longhorn-system
+          - media-automation
           - media-servers
           - monitoring
           - networking
