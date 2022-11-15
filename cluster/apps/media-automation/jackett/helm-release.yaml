@@ -68,6 +68,8 @@ spec:
           - hosts:
               - *host
             secretName: "jackett-tls"
+    podSecurityContext:
+      fsGroup: 0
     volumeClaimTemplates:
       - name: config
         mountPath: /config
