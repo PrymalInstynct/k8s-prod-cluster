@@ -56,7 +56,7 @@ spec:
           external-dns.home.arpa/enabled: "true"
           hajimari.io/enable: "true"
           hajimari.io/appName: "Radarr - UHD"
-          hajimari.io/icon: "ulta-high-definition"
+          hajimari.io/icon: "ultra-high-definition"
           auth.home.arpa/enabled: "true"
           nginx.ingress.kubernetes.io/auth-method: GET
           nginx.ingress.kubernetes.io/auth-url: http://authelia.authentication.svc.cluster.local/api/verify
