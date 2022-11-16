@@ -27,9 +27,9 @@ spec:
       tag: 0.10.1@sha256:9daddbc32e93777bde6dfc45d088021b8a53bcb717f38508259641a5e11aa27f
     env:
       TZ: "${TIMEZONE}"
-      UN_SONARR_0_URL: http://sonarr.default.svc.cluster.local
+      UN_SONARR_0_URL: http://sonarr.media-automation.svc.cluster.local
       UN_SONARR_0_PATHS_0: /complete/sonarr
-      UN_RADARR_0_URL: http://radarr-hd.default.svc.cluster.local
+      UN_RADARR_0_URL: http://radarr-hd.media-automation.svc.cluster.local
       UN_RADARR_0_PATHS_0: /complete/radarr-hd
     envFrom:
       - secretRef:
