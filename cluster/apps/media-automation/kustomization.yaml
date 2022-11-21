@@ -4,8 +4,5 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - prowlarr
-  - radarr-hd
-  - radarr-uhd
-  - sonarr
   - unpackerr-hd
   - unpackerr-uhd
