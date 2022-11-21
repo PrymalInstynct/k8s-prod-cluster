@@ -67,7 +67,7 @@ spec:
             sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.${SECRET_DOMAIN}/css/base/radarr/dark.css"></head>';
             sub_filter_once on;
         hosts:
-          - host: *host
+          - host: &host radarr-uhd.${SECRET_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
