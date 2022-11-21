@@ -5,10 +5,6 @@ namespace: media-automation
 resources:
   - secret.sops.yaml
   - helm-release.yaml
-configMapGenerator:
-  - name: radarr-hd-pushover
-    files:
-      - ./scripts/pushover-notify.sh
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
