@@ -15,9 +15,9 @@ spec:
     storageClass: local-path
   superuserSecret:
     name: postgres-superuser
-  bootstrap:
-    recovery:
-      source: postgres-v1
+  # bootstrap:
+  #   recovery:
+  #     source: postgres-v1
   postgresql:
     parameters:
       max_connections: "300"
