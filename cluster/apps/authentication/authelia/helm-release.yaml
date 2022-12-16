@@ -22,8 +22,8 @@ spec:
     remediation:
       retries: 5
   dependsOn:
-    - name: postgres
-      namespace: databases
+    - name: cloudnative-pg
+      namespace: cnpg-system
     - name: glauth
       namespace: authentication
     - name: redis
