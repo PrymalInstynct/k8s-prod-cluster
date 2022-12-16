@@ -3,7 +3,7 @@ apiVersion: postgresql.cnpg.io/v1
 kind: ScheduledBackup
 metadata:
   name: postgres
-  namespace: databases
+  namespace: default
 spec:
   schedule: "@weekly"
   immediate: true
