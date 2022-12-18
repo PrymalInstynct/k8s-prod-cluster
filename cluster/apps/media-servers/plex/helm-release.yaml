@@ -21,13 +21,13 @@ spec:
   upgrade:
     remediation:
       retries: 3
-  dependsOn:
+  # dependsOn:
     # - name: intel-gpu-plugin
     #   namespace: kube-system
     # - name: node-feature-discovery
     #   namespace: kube-system
-    - name: longhorn
-      namespace: longhorn-system
+    # - name: longhorn
+    #   namespace: longhorn-system
   values:
     controller:
       type: statefulset

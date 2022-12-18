@@ -21,9 +21,9 @@ spec:
   upgrade:
     remediation:
       retries: 3
-  dependsOn:
-    - name: longhorn
-      namespace: longhorn-system
+  # dependsOn:
+  #   - name: longhorn
+  #     namespace: longhorn-system
   values:
     controller:
       type: statefulset
