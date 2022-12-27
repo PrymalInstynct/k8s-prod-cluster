@@ -54,7 +54,7 @@ spec:
           external-dns.home.arpa/enabled: "true"
           hajimari.io/enable: "true"
           hajimari.io/appName: "Jellyfin"
-          hajimari.io/icon: "jellyfish"
+          hajimari.io/icon: simple-icons:jellyfin
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
