@@ -58,7 +58,7 @@ spec:
             scrapeTimeout: 10s
     ingress:
       main:
-        enabled: false
+        enabled: true
         ingressClassName: "nginx"
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
