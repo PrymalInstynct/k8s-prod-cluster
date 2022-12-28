@@ -101,7 +101,7 @@ spec:
               url: "https://lmpassage3.external.lmco.com/"
     ingress:
       main:
-        enabled: true
+        enabled: false
         ingressClassName: "nginx"
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"

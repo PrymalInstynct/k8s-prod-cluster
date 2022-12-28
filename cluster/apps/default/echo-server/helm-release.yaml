@@ -50,7 +50,7 @@ spec:
         enabled: false
     ingress:
       main:
-        enabled: true
+        enabled: false
         ingressClassName: "nginx"
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
