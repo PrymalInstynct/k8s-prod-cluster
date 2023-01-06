@@ -16,4 +16,5 @@ resources:
   - networking
   - storage
   - system-upgrade
+  - tigera-operator
   - web-tools
