@@ -83,6 +83,8 @@ spec:
               url: "https://thehackernews.com/"
             - name: picoCTF
               url: "https://picoctf.org/"
+            - name: Detection Lab
+              url: "https://github.com/clong/DetectionLab"
         - group: Dev
           bookmarks:
             - name: GitHub
