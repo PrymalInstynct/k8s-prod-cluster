@@ -29,7 +29,7 @@ spec:
       type: statefulset
     image:
       repository: ghcr.io/onedr0p/prowlarr-nightly
-      tag: 1.1.0.2283@sha256:85864c3a50b5aeea4e7d40e91e6fe47acf936e248714f62a7031b45e6f223ebf
+      tag: 1.1.0.2303@sha256:75c0141547b7781f2f8ab82be36ea6cff6d8e45abd0c8300a14f5c9b3744418f
     env:
       TZ: "${TIMEZONE}"
       PROWLARR__INSTANCE_NAME: Prowlarr
