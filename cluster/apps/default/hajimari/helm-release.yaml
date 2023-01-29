@@ -41,7 +41,7 @@ spec:
           - web-tools
       name: "Chad"
       lightTheme: "paper"
-      darkTheme: "tron"
+      darkTheme: "passion"
       alwaysTargetBlank: true
       showBookmarks: true
       showBookmarkGroups: true
