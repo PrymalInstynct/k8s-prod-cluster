@@ -42,14 +42,11 @@ spec:
         hajimari.io/appName: "Kubernetes Dashboard"
         hajimari.io/icon: mdi:kubernetes
       hosts:
-        - host: &host "kubernetes.${SECRET_DOMAIN}"
-          paths:
-            - path: /
-              pathType: Prefix
+        - "kubernetes.${SECRET_DOMAIN}"
       tls:
-        - hosts:
-            - *host
-          secretName: "kubernetes-dashboard-tls"
+        - secretName: kubernetes-dashboard-tls
+          hosts:
+            - "kubernetes.${SECRET_DOMAIN}"
     metricsScraper:
       enabled: true
     serviceMonitor:
