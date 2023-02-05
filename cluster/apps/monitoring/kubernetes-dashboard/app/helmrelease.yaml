@@ -38,13 +38,18 @@ spec:
       className: nginx
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
+        hajimari.io/enable: "true"
+        hajimari.io/appName: "Kubernetes Dashboard"
         hajimari.io/icon: mdi:kubernetes
       hosts:
-        - &host "kubernetes.${SECRET_DOMAIN}"
+        - host: &host "kubernetes.${SECRET_DOMAIN}"
+          paths:
+            - path: /
+              pathType: Prefix
       tls:
         - hosts:
             - *host
-          secretName: kubernetes-dashboard-tls
+          secretName: "kubernetes-dashboard-tls"
     metricsScraper:
       enabled: true
     serviceMonitor:
