@@ -1,0 +1,32 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+    external-dns.home.arpa/enabled: "true"
+    hajimari.io/enable: "true"
+    hajimari.io/appName: "Authelia"
+    hajimari.io/icon: "account-key"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header Cache-Control "no-store";
+      add_header Pragma "no-cache";
+      add_header X-Frame-Options "SAMEORIGIN";
+      add_header X-XSS-Protection "1; mode=block";
+  name: splunk-ingress
+  namespace: splunk-enterprise
+spec:
+  rules:
+    - host: "splunk.${SECRET_DOMAIN}"
+      http:
+        paths:
+          - path: /en-US
+            pathType: Prefix
+            backend:
+              serviceName: splunk-single-standalone-service
+              servicePort: 8000
+  tls:
+    - hosts:
+        - "splunk.${SECRET_DOMAIN}"
+      secretName: splunk-sh-tls

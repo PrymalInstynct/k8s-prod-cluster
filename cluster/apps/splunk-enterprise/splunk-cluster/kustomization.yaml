@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - deploy-cluster.yaml
   # - helm-release.yaml
+  - ingress.yaml
   - license.sops.yaml
   - secret-apps.sops.yaml
   - secret-indexes.sops.yaml
