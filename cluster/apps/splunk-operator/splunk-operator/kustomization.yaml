@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   # - helm-release.yaml
   # - pvc.yaml
-  # - splunk-operator-cluster.yaml
+  - splunk-operator-cluster.yaml
