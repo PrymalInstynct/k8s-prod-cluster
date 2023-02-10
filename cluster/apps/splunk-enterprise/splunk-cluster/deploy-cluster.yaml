@@ -34,9 +34,6 @@ metadata:
   finalizers:
     - enterprise.splunk.com/delete-pvc
 spec:
-  replicas: 3
-  storageClassName: longhorn
-  varStorage: "128Gi"
   clusterManagerRef:
     name: cm
   monitoringConsoleRef:
