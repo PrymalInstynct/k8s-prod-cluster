@@ -1,0 +1,66 @@
+---
+apiVersion: enterprise.splunk.com/v4
+kind: LicenseManager
+metadata:
+  name: lm
+  namespace: splunk-enterprise
+  finalizers:
+    - enterprise.splunk.com/delete-pvc
+spec:
+  volumes:
+    - name: licenses
+      configMap:
+        name: splunk-licenses
+  licenseUrl: /mnt/licenses/enterprise.lic
+---
+apiVersion: enterprise.splunk.com/v4
+kind: ClusterManager
+metadata:
+  name: cm
+  namespace: splunk-enterprise
+  finalizers:
+    - enterprise.splunk.com/delete-pvc
+spec:
+  monitoringConsoleRef:
+    name: mc
+  licenseManagerRef:
+    name: lm
+---
+apiVersion: enterprise.splunk.com/v3
+kind: IndexerCluster
+metadata:
+  name: idxc
+  namespace: splunk-enterprise
+  finalizers:
+    - enterprise.splunk.com/delete-pvc
+spec:
+  replicas: 3
+  storageClassName: longhorn
+  varStorage: "128Gi"
+  clusterManagerRef:
+    name: cm
+  monitoringConsoleRef:
+    name: mc
+---
+apiVersion: enterprise.splunk.com/v4
+kind: Standalone
+metadata:
+  name: single
+  namespace: splunk-enterprise
+  finalizers:
+    - enterprise.splunk.com/delete-pvc
+spec:
+  clusterManagerRef:
+    name: cm
+  monitoringConsoleRef:
+    name: mc
+  licenseManagerRef:
+    name: lm
+---
+apiVersion: enterprise.splunk.com/v4
+kind: MonitoringConsole
+metadata:
+  name: mc
+  namespace: splunk-enterprise
+  finalizers:
+    - enterprise.splunk.com/delete-pvc
