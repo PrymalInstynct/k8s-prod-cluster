@@ -23,5 +23,5 @@ resources:
   - metallb-charts.yaml
   - metrics-server-charts.yaml
   - prometheus-community-charts.yaml
-  - splunk-operator-charts.yaml
+  - splunk-charts.yaml
   - stakater-charts.yaml
