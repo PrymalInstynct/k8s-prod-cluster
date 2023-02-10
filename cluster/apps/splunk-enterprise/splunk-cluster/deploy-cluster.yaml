@@ -7,6 +7,21 @@ metadata:
   finalizers:
     - enterprise.splunk.com/delete-pvc
 spec:
+  startupProbe:
+    initialDelaySeconds: 40
+    timeoutSeconds: 30
+    periodSeconds: 30
+    failureThreshold: 120
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+    periodSeconds: 30
+    failureThreshold: 30
+  readinessProbe:
+    initialDelaySeconds: 10
+    timeoutSeconds: 5
+    periodSeconds: 5
+    failureThreshold: 30
   volumes:
     - name: licenses
       configMap:
@@ -21,10 +36,53 @@ metadata:
   finalizers:
     - enterprise.splunk.com/delete-pvc
 spec:
+  startupProbe:
+    initialDelaySeconds: 40
+    timeoutSeconds: 30
+    periodSeconds: 30
+    failureThreshold: 120
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+    periodSeconds: 30
+    failureThreshold: 30
+  readinessProbe:
+    initialDelaySeconds: 10
+    timeoutSeconds: 5
+    periodSeconds: 5
+    failureThreshold: 30
   monitoringConsoleRef:
     name: mc
   licenseManagerRef:
     name: lm
+  # appRepo:
+  #   appsRepoPollIntervalSeconds: 900
+  #   appSources:
+  #     - name: indexerApps
+  #       location: idxApps/
+  #       volume: volume_app_repo_us
+  #       scope: local
+  #   volumes:
+  #     - name: volume_app_repo_us
+  #       storageType: s3
+  #       provider: minio
+  #       path: splunk-apps/
+  #       endpoint: http://10.10.1.30:9000
+  #       region: us-east-1
+  #       secretRef: s3-secret-apps
+  # smartstore:
+  #   volumes:
+  #     - name: volume_indexer_repo_us
+  #       storageType: s3
+  #       provider: minio
+  #       path: splunk-indexes/
+  #       endpoint: http://10.10.1.30:9000
+  #       region: us-east-1
+  #       secretRef: s3-secret-indexes
+  #   indexes:
+  #     - name: main
+  #       remotePath: main
+  #       volumeName: volume_indexer_repo_us
 ---
 apiVersion: enterprise.splunk.com/v4
 kind: IndexerCluster
@@ -34,6 +92,21 @@ metadata:
   finalizers:
     - enterprise.splunk.com/delete-pvc
 spec:
+  startupProbe:
+    initialDelaySeconds: 40
+    timeoutSeconds: 30
+    periodSeconds: 30
+    failureThreshold: 120
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+    periodSeconds: 30
+    failureThreshold: 30
+  readinessProbe:
+    initialDelaySeconds: 10
+    timeoutSeconds: 5
+    periodSeconds: 5
+    failureThreshold: 30
   clusterManagerRef:
     name: cm
   monitoringConsoleRef:
@@ -47,12 +120,56 @@ metadata:
   finalizers:
     - enterprise.splunk.com/delete-pvc
 spec:
+  startupProbe:
+    initialDelaySeconds: 40
+    timeoutSeconds: 30
+    periodSeconds: 30
+    failureThreshold: 120
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+    periodSeconds: 30
+    failureThreshold: 30
+  readinessProbe:
+    initialDelaySeconds: 10
+    timeoutSeconds: 5
+    periodSeconds: 5
+    failureThreshold: 30
   clusterManagerRef:
     name: cm
   monitoringConsoleRef:
     name: mc
   licenseManagerRef:
     name: lm
+  # appRepo:
+  #   appsRepoPollIntervalSeconds: 900
+  #   defaults:
+  #     volumeName: volume_app_repo_us
+  #     scope: local
+  #   appSources:
+  #     - name: searchApps
+  #       location: shApps/
+  #       volume: volume_app_repo_us
+  #       scope: local
+  #     - name: deployApps
+  #       location: deployApps/
+  #       volume: volume_app_repo_us
+  #       scope: cluster
+  #     - name: premiumApps
+  #       location: premiumApps/
+  #       scope: premiumApps
+  #       premiumAppsProps:
+  #         type: enterpriseSecurity
+  #         esDefaults:
+  #           sslEnablement: ignore
+  #   volumes:
+  #     - name: volume_app_repo_us
+  #       storageType: s3
+  #       provider: minio
+  #       path: splunk-apps/
+  #       endpoint: http://10.10.1.30:9000
+  #       region: us-east-1
+  #       secretRef: s3-secret-apps
 ---
 apiVersion: enterprise.splunk.com/v4
 kind: MonitoringConsole
@@ -61,3 +178,19 @@ metadata:
   namespace: splunk-enterprise
   finalizers:
     - enterprise.splunk.com/delete-pvc
+spec:
+  startupProbe:
+    initialDelaySeconds: 40
+    timeoutSeconds: 30
+    periodSeconds: 30
+    failureThreshold: 120
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+    periodSeconds: 30
+    failureThreshold: 30
+  readinessProbe:
+    initialDelaySeconds: 10
+    timeoutSeconds: 5
+    periodSeconds: 5
+    failureThreshold: 30
