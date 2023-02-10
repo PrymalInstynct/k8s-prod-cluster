@@ -33,7 +33,7 @@ spec:
       enabled: false
 
     clusterManager:
-      enabled: false
+      enabled: true
       name: "cm"
       namespaceOverride: "splunk-enterprise"
       additionalLabels: {}
@@ -83,7 +83,7 @@ spec:
       resources:
         requests:
           memory: "2Gi"
-          cpu: "1"
+          cpu: "0.1"
         limits:
           memory: "12Gi"
           cpu: "24"
@@ -115,7 +115,7 @@ spec:
       resources:
         requests:
           memory: "2Gi"
-          cpu: "1"
+          cpu: "0.1"
         limits:
           memory: "12Gi"
           cpu: "24"
@@ -177,7 +177,7 @@ spec:
       resources:
         requests:
           memory: "2Gi"
-          cpu: "1"
+          cpu: "0.1"
         limits:
           memory: "12Gi"
           cpu: "24"
@@ -210,7 +210,7 @@ spec:
       resources:
         requests:
           memory: "2Gi"
-          cpu: "1"
+          cpu: "0.1"
         limits:
           memory: "12Gi"
           cpu: "24"
