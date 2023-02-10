@@ -92,7 +92,7 @@ spec:
       affinity: {}
 
     indexerCluster:
-      enabled: false
+      enabled: true
       name: "idxc"
       namespaceOverride: "splunk-enterprise"
       additionalLabels: {}
