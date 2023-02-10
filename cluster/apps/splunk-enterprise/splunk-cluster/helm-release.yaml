@@ -33,7 +33,7 @@ spec:
       enabled: false
 
     clusterManager:
-      enabled: true
+      enabled: false
       name: "cm"
       namespaceOverride: "splunk-enterprise"
       additionalLabels: {}
@@ -92,7 +92,7 @@ spec:
       affinity: {}
 
     indexerCluster:
-      enabled: true
+      enabled: false
       name: "idxc"
       namespaceOverride: "splunk-enterprise"
       additionalLabels: {}
@@ -124,7 +124,7 @@ spec:
       affinity: {}
 
     searchHeadCluster:
-      enabled: true
+      enabled: false
       name: "shc"
       namespaceOverride: "splunk-enterprise"
       additionalLabels: {}
@@ -186,7 +186,7 @@ spec:
       affinity: {}
 
     monitoringConsole:
-      enabled: true
+      enabled: false
       name: "mc"
       namespaceOverride: "splunk-enterprise"
       additionalLabels: {}
