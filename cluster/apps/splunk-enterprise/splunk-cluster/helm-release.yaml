@@ -124,7 +124,7 @@ spec:
       affinity: {}
 
     searchHeadCluster:
-      enabled: false
+      enabled: true
       name: "shc"
       namespaceOverride: "splunk-enterprise"
       additionalLabels: {}
