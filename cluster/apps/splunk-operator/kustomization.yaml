@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: splunk-operator
 resources:
   - namespace.yaml
-  # - splunk-operator
+  - splunk-operator
