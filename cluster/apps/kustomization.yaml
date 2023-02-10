@@ -13,6 +13,7 @@ resources:
   - monitoring
   - media-automation
   - networking
+  - splunk-enterprise
   - splunk-operator
   - storage
   - system-upgrade
