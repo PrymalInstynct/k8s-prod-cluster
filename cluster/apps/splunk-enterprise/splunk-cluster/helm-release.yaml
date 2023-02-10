@@ -73,11 +73,11 @@ spec:
       livenessInitialDelaySeconds: 900
       readinessInitialDelaySeconds: 100
       etcVolumeStorageConfig:
-        ephemeralStorage: true
+        ephemeralStorage: false
         storageCapacity: 10Gi
         storageClassName: longhorn-retain
       varVolumeStorageConfig:
-        ephemeralStorage: true
+        ephemeralStorage: false
         storageCapacity: 100Gi
         storageClassName: longhorn-retain
       resources:
@@ -105,11 +105,11 @@ spec:
       livenessInitialDelaySeconds: 900
       readinessInitialDelaySeconds: 100
       etcVolumeStorageConfig:
-        ephemeralStorage: true
+        ephemeralStorage: false
         storageCapacity: 10Gi
         storageClassName: longhorn-retain
       varVolumeStorageConfig:
-        ephemeralStorage: true
+        ephemeralStorage: false
         storageCapacity: 100Gi
         storageClassName: longhorn-retain
       resources:
@@ -167,11 +167,11 @@ spec:
       livenessInitialDelaySeconds: 900
       readinessInitialDelaySeconds: 100
       etcVolumeStorageConfig:
-        ephemeralStorage: true
+        ephemeralStorage: false
         storageCapacity: 10Gi
         storageClassName: longhorn-retain
       varVolumeStorageConfig:
-        ephemeralStorage: true
+        ephemeralStorage: false
         storageCapacity: 100Gi
         storageClassName: longhorn-retain
       resources:
@@ -298,11 +298,11 @@ spec:
       livenessInitialDelaySeconds: 900
       readinessInitialDelaySeconds: 100
       etcVolumeStorageConfig:
-        ephemeralStorage: true
+        ephemeralStorage: false
         storageCapacity: 10Gi
         storageClassName: longhorn-retain
       varVolumeStorageConfig:
-        ephemeralStorage: true
+        ephemeralStorage: false
         storageCapacity: 100Gi
         storageClassName: longhorn-retain
       resources:
