@@ -1,0 +1,255 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: splunk-cluster
+  namespace: splunk-enterprise
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: splunk-enterprise
+      version: 2.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: splunk
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  dependsOn:
+    - name: longhorn
+      namespace: longhorn-system
+  values:
+    image:
+      repository: ""
+      imagePullPolicy: ""
+      imagePullSecrets: []
+    splunk-operator:
+      enabled: false
+
+    clusterManager:
+      enabled: true
+      name: "cm"
+      namespaceOverride: "splunk-enterprise"
+      additionalLabels: {}
+      appRepo:
+        appsRepoPollIntervalSeconds: 900
+        appSources:
+          - name: indexerApps
+            location: idxApps/
+            volume: volume_app_repo_us
+            scope: local
+        volumes:
+          - name: volume_app_repo_us
+            storageType: s3
+            provider: minio
+            path: splunk-apps/
+            endpoint: http://10.10.1.30:9000
+            region: us-east-1
+            secretRef: s3-secret-apps
+      smartstore:
+        volumes:
+          - name: volume_indexer_repo_us
+            storageType: s3
+            provider: minio
+            path: splunk-indexes/
+            endpoint: http://10.10.1.30:9000
+            region: us-east-1
+            secretRef: s3-secret-indexes
+        indexes:
+          - name: main
+            remotePath: main
+            volumeName: volume_indexer_repo_us
+      licenseUrl: ""
+      defaultsUrl: ""
+      defaults: {}
+      defaultsUrlApps: ""
+      extraEnv: []
+      livenessInitialDelaySeconds: 300
+      readinessInitialDelaySeconds: 10
+      etcVolumeStorageConfig:
+        ephemeralStorage: true
+        storageCapacity: 10Gi
+        storageClassName: longhorn-retain
+      varVolumeStorageConfig:
+        ephemeralStorage: true
+        storageCapacity: 100Gi
+        storageClassName: longhorn-retain
+      resources:
+        requests:
+          memory: "2Gi"
+          cpu: "4"
+        limits:
+          memory: "12Gi"
+          cpu: "24"
+      serviceAccount: ""
+      tolerations: []
+      affinity: {}
+
+    indexerCluster:
+      enabled: true
+      name: "idxc"
+      namespaceOverride: "splunk-enterprise"
+      additionalLabels: {}
+      replicaCount: 1
+      volumes: []
+      licenseUrl: ""
+      defaultsUrl: ""
+      defaults: {}
+      extraEnv: []
+      livenessInitialDelaySeconds: 300
+      readinessInitialDelaySeconds: 10
+      etcVolumeStorageConfig:
+        ephemeralStorage: true
+        storageCapacity: 10Gi
+        storageClassName: longhorn-retain
+      varVolumeStorageConfig:
+        ephemeralStorage: true
+        storageCapacity: 100Gi
+        storageClassName: longhorn-retain
+      resources:
+        requests:
+          memory: "2Gi"
+          cpu: "4"
+        limits:
+          memory: "12Gi"
+          cpu: "24"
+      serviceAccount: ""
+      tolerations: []
+      affinity: {}
+
+    searchHeadCluster:
+      enabled: true
+      name: "shc"
+      namespaceOverride: "splunk-enterprise"
+      additionalLabels: {}
+      replicaCount: 1
+      appRepo:
+        appsRepoPollIntervalSeconds: 900
+        defaults:
+          volumeName: volume_app_repo_us
+          scope: local
+        appSources:
+          - name: searchApps
+            location: shApps/
+            volume: volume_app_repo_us
+            scope: local
+          - name: deployApps
+            location: deployApps/
+            volume: volume_app_repo_us
+            scope: cluster
+          - name: premiumApps
+            location: premiumApps/
+            scope: premiumApps
+            premiumAppsProps:
+              type: enterpriseSecurity
+              esDefaults:
+                sslEnablement: ignore
+        volumes:
+          - name: volume_app_repo_us
+            storageType: s3
+            provider: minio
+            path: splunk-apps/
+            endpoint: http://10.10.1.30:9000
+            region: us-east-1
+            secretRef: s3-secret-apps
+      volumes: []
+      licenseUrl: ""
+      defaultsUrl: ""
+      defaults: {}
+      defaultsUrlApps: ""
+      extraEnv: []
+      livenessInitialDelaySeconds: 300
+      readinessInitialDelaySeconds: 10
+      etcVolumeStorageConfig:
+        ephemeralStorage: true
+        storageCapacity: 10Gi
+        storageClassName: longhorn-retain
+      varVolumeStorageConfig:
+        ephemeralStorage: true
+        storageCapacity: 100Gi
+        storageClassName: longhorn-retain
+      resources:
+        requests:
+          memory: "2Gi"
+          cpu: "4"
+        limits:
+          memory: "12Gi"
+          cpu: "24"
+      serviceAccount: ""
+      tolerations: []
+      affinity: {}
+
+    monitoringConsole:
+      enabled: true
+      name: "mc"
+      namespaceOverride: "splunk-enterprise"
+      additionalLabels: {}
+      appRepo: {}
+      volumes: []
+      licenseUrl: ""
+      defaultsUrl: ""
+      defaults: {}
+      defaultsUrlApps: ""
+      extraEnv: []
+      livenessInitialDelaySeconds: 300
+      readinessInitialDelaySeconds: 10
+      etcVolumeStorageConfig:
+        ephemeralStorage: false
+        storageCapacity: 10Gi
+        storageClassName: longhorn-retain
+      varVolumeStorageConfig:
+        ephemeralStorage: false
+        storageCapacity: 100Gi
+        storageClassName: longhorn-retain
+      resources:
+        requests:
+          memory: "2Gi"
+          cpu: "4"
+        limits:
+          memory: "12Gi"
+          cpu: "24"
+      serviceAccount: ""
+      tolerations: []
+      affinity: {}
+
+    licenseManager:
+      enabled: true
+      name: "lm"
+      namespaceOverride: "splunk-enterprise"
+      additionalLabels: {}
+      appRepo: {}
+      volumes:
+        - name: licenses
+          configMap:
+            name: splunk-licenses
+      licenseUrl: "/mnt/licenses/enterprise.lic"
+      defaultsUrl: ""
+      defaults: {}
+      defaultsUrlApps: ""
+      extraEnv: []
+      livenessInitialDelaySeconds: 300
+      readinessInitialDelaySeconds: 10
+      etcVolumeStorageConfig:
+        ephemeralStorage: false
+        storageCapacity: 10Gi
+        storageClassName: longhorn-retain
+      varVolumeStorageConfig:
+        ephemeralStorage: false
+        storageCapacity: 100Gi
+        storageClassName: longhorn-retain
+      resources:
+        requests:
+          memory: "2Gi"
+          cpu: "4"
+        limits:
+          memory: "12Gi"
+          cpu: "24"
+      serviceAccount: ""
+      tolerations: []
+      affinity: {}
