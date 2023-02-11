@@ -111,6 +111,8 @@ spec:
     name: cm
   monitoringConsoleRef:
     name: mc
+  licenseManagerRef:
+    name: lm
 ---
 apiVersion: enterprise.splunk.com/v4
 kind: Standalone
