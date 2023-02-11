@@ -107,6 +107,7 @@ spec:
     timeoutSeconds: 5
     periodSeconds: 5
     failureThreshold: 30
+  replicas: 1
   clusterManagerRef:
     name: cm
   monitoringConsoleRef:
