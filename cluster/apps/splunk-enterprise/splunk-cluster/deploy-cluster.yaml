@@ -22,6 +22,13 @@ spec:
     timeoutSeconds: 5
     periodSeconds: 5
     failureThreshold: 30
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 2500m
+      memory: 4096Mi
   volumes:
     - name: licenses
       configMap:
@@ -51,6 +58,13 @@ spec:
     timeoutSeconds: 5
     periodSeconds: 5
     failureThreshold: 30
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 2500m
+      memory: 4096Mi
   monitoringConsoleRef:
     name: mc
   licenseManagerRef:
@@ -107,7 +121,13 @@ spec:
     timeoutSeconds: 5
     periodSeconds: 5
     failureThreshold: 30
-  replicas: 1
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 2500m
+      memory: 4096Mi
   clusterManagerRef:
     name: cm
   monitoringConsoleRef:
@@ -138,6 +158,13 @@ spec:
     timeoutSeconds: 5
     periodSeconds: 5
     failureThreshold: 30
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 2500m
+      memory: 4096Mi
   clusterManagerRef:
     name: cm
   monitoringConsoleRef:
@@ -173,27 +200,3 @@ spec:
   #       endpoint: http://10.10.1.30:9000
   #       region: us-east-1
   #       secretRef: s3-secret-apps
----
-apiVersion: enterprise.splunk.com/v4
-kind: MonitoringConsole
-metadata:
-  name: mc
-  namespace: splunk-enterprise
-  finalizers:
-    - enterprise.splunk.com/delete-pvc
-spec:
-  startupProbe:
-    initialDelaySeconds: 40
-    timeoutSeconds: 30
-    periodSeconds: 30
-    failureThreshold: 120
-  livenessProbe:
-    initialDelaySeconds: 30
-    timeoutSeconds: 30
-    periodSeconds: 30
-    failureThreshold: 30
-  readinessProbe:
-    initialDelaySeconds: 10
-    timeoutSeconds: 5
-    periodSeconds: 5
-    failureThreshold: 30
