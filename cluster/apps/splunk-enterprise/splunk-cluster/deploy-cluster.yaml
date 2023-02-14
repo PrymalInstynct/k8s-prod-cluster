@@ -69,34 +69,34 @@ spec:
     name: mc
   licenseManagerRef:
     name: lm
-  # appRepo:
-  #   appsRepoPollIntervalSeconds: 900
-  #   appSources:
-  #     - name: indexerApps
-  #       location: idxApps/
-  #       volume: volume_app_repo_us
-  #       scope: local
-  #   volumes:
-  #     - name: volume_app_repo_us
-  #       storageType: s3
-  #       provider: minio
-  #       path: splunk-apps/
-  #       endpoint: http://10.10.1.30:9000
-  #       region: us-east-1
-  #       secretRef: s3-secret-apps
-  # smartstore:
-  #   volumes:
-  #     - name: volume_indexer_repo_us
-  #       storageType: s3
-  #       provider: minio
-  #       path: splunk-indexes/
-  #       endpoint: http://10.10.1.30:9000
-  #       region: us-east-1
-  #       secretRef: s3-secret-indexes
-  #   indexes:
-  #     - name: main
-  #       remotePath: main
-  #       volumeName: volume_indexer_repo_us
+  appRepo:
+    appsRepoPollIntervalSeconds: 900
+    appSources:
+      - name: indexerApps
+        location: idxApps/
+        volume: volume_app_repo_us
+        scope: local
+    volumes:
+      - name: volume_app_repo_us
+        storageType: s3
+        provider: minio
+        path: splunk-apps/
+        endpoint: http://10.10.1.30:9000
+        region: us-east-1
+        secretRef: s3-secret-apps
+  smartstore:
+    volumes:
+      - name: volume_indexer_repo_us
+        storageType: s3
+        provider: minio
+        path: splunk-indexes/
+        endpoint: http://10.10.1.30:9000
+        region: us-east-1
+        secretRef: s3-secret-indexes
+    indexes:
+      - name: main
+        remotePath: main
+        volumeName: volume_indexer_repo_us
 ---
 apiVersion: enterprise.splunk.com/v4
 kind: IndexerCluster
