@@ -9,7 +9,7 @@ metadata:
     hajimari.io/enable: "true"
     hajimari.io/appName: "Splunk-SH"
     hajimari.io/icon: "mdi:splunk"
-  name: splunk-ingress
+  name: splunk-sh-ingress
   namespace: splunk-enterprise
 spec:
   rules:
@@ -38,7 +38,7 @@ metadata:
     hajimari.io/enable: "true"
     hajimari.io/appName: "Splunk-IDX"
     hajimari.io/icon: "mdi:splunk"
-  name: splunk-ingress
+  name: splunk-idx-ingress
   namespace: splunk-enterprise
 spec:
   rules:
@@ -67,7 +67,7 @@ metadata:
     hajimari.io/enable: "true"
     hajimari.io/appName: "Splunk-CM"
     hajimari.io/icon: "mdi:splunk"
-  name: splunk-ingress
+  name: splunk-cm-ingress
   namespace: splunk-enterprise
 spec:
   rules:
@@ -96,7 +96,7 @@ metadata:
     hajimari.io/enable: "true"
     hajimari.io/appName: "Splunk-LM"
     hajimari.io/icon: "mdi:splunk"
-  name: splunk-ingress
+  name: splunk-lm-ingress
   namespace: splunk-enterprise
 spec:
   rules:
