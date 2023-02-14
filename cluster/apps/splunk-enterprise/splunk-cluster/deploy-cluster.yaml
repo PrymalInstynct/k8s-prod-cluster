@@ -75,7 +75,7 @@ spec:
       - name: indexerApps
         location: idxApps/
         volume: volume_app_repo_us
-        scope: local
+        scope: cluster
     volumes:
       - name: volume_app_repo_us
         storageType: s3
