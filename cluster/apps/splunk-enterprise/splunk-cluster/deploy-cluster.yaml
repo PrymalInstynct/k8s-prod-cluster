@@ -71,11 +71,12 @@ spec:
     name: lm
   appRepo:
     appsRepoPollIntervalSeconds: 900
+    defaults:
+      volumeName: volume_app_repo_us
+      scope: cluster
     appSources:
       - name: indexerApps
         location: idxApps/
-        volume: volume_app_repo_us
-        scope: cluster
     volumes:
       - name: volume_app_repo_us
         storageType: s3
@@ -179,12 +180,8 @@ spec:
   #   appSources:
   #     - name: searchApps
   #       location: shApps/
-  #       volume: volume_app_repo_us
-  #       scope: local
   #     - name: deployApps
   #       location: deployApps/
-  #       volume: volume_app_repo_us
-  #       scope: cluster
   #     - name: premiumApps
   #       location: premiumApps/
   #       scope: premiumApps
