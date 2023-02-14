@@ -24,8 +24,10 @@ spec:
           - path: /en-US
             pathType: Prefix
             backend:
-              serviceName: splunk-single-standalone-service
-              servicePort: 8000
+              service:
+                name: splunk-single-standalone-service
+                port:
+                  number: 8000
   tls:
     - hosts:
         - "splunk.${SECRET_DOMAIN}"
