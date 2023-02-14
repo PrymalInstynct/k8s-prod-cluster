@@ -7,21 +7,16 @@ metadata:
     external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
     external-dns.home.arpa/enabled: "true"
     hajimari.io/enable: "true"
-    hajimari.io/appName: "Splunk"
+    hajimari.io/appName: "Splunk-SH"
     hajimari.io/icon: "mdi:splunk"
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      add_header Cache-Control "no-store";
-      add_header Pragma "no-cache";
-      add_header X-Frame-Options "SAMEORIGIN";
-      add_header X-XSS-Protection "1; mode=block";
   name: splunk-ingress
   namespace: splunk-enterprise
 spec:
   rules:
-    - host: "splunk.${SECRET_DOMAIN}"
+    - host: "search.${SECRET_DOMAIN}"
       http:
         paths:
-          - path: /en-US
+          - path: /
             pathType: Prefix
             backend:
               service:
@@ -30,5 +25,92 @@ spec:
                   number: 8000
   tls:
     - hosts:
-        - "splunk.${SECRET_DOMAIN}"
+        - "search.${SECRET_DOMAIN}"
       secretName: splunk-sh-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+    external-dns.home.arpa/enabled: "true"
+    hajimari.io/enable: "true"
+    hajimari.io/appName: "Splunk-IDX"
+    hajimari.io/icon: "mdi:splunk"
+  name: splunk-ingress
+  namespace: splunk-enterprise
+spec:
+  rules:
+    - host: "index.${SECRET_DOMAIN}"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: splunk-idxc-indexer-service
+                port:
+                  number: 8000
+  tls:
+    - hosts:
+        - "index.${SECRET_DOMAIN}"
+      secretName: splunk-idx-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+    external-dns.home.arpa/enabled: "true"
+    hajimari.io/enable: "true"
+    hajimari.io/appName: "Splunk-CM"
+    hajimari.io/icon: "mdi:splunk"
+  name: splunk-ingress
+  namespace: splunk-enterprise
+spec:
+  rules:
+    - host: "cluster.${SECRET_DOMAIN}"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: splunk-cm-cluster-manager-service
+                port:
+                  number: 8000
+  tls:
+    - hosts:
+        - "cluster.${SECRET_DOMAIN}"
+      secretName: splunk-cm-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+    external-dns.home.arpa/enabled: "true"
+    hajimari.io/enable: "true"
+    hajimari.io/appName: "Splunk-LM"
+    hajimari.io/icon: "mdi:splunk"
+  name: splunk-ingress
+  namespace: splunk-enterprise
+spec:
+  rules:
+    - host: "license.${SECRET_DOMAIN}"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: splunk-lm-license-manager-service
+                port:
+                  number: 8000
+  tls:
+    - hosts:
+        - "license.${SECRET_DOMAIN}"
+      secretName: splunk-lm-tls

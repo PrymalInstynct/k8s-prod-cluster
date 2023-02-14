@@ -37,6 +37,7 @@ spec:
           - media-servers
           - monitoring
           - networking
+          - splunk-enterprise
           - storage
           - web-tools
       name: "Chad"
@@ -59,8 +60,6 @@ spec:
               url: "http://scorpion.${SECRET_PRIVATE_DOMAIN}:9001"
             - name: AdGuard Home
               url: "http://scorpion.${SECRET_PRIVATE_DOMAIN}:5300/#"
-            - name: Internet Monitoring
-              url: "http://netmon.${SECRET_PRIVATE_DOMAIN}:3030/d/o9mIe_Aik/internet-connection?orgId=1&refresh=5m&from=now-24h&to=now"
             - name: Print
               url: "https://print.${SECRET_PRIVATE_DOMAIN}"
         - group: Google
