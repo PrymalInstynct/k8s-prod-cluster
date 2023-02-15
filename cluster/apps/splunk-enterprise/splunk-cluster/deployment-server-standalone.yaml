@@ -1,0 +1,42 @@
+---
+apiVersion: enterprise.splunk.com/v4
+kind: Standalone
+metadata:
+  name: ds
+  namespace: splunk-enterprise
+  finalizers:
+    - enterprise.splunk.com/delete-pvc
+spec:
+  startupProbe:
+    initialDelaySeconds: 40
+    timeoutSeconds: 30
+    periodSeconds: 30
+    failureThreshold: 20
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 30
+    periodSeconds: 30
+    failureThreshold: 6
+  readinessProbe:
+    initialDelaySeconds: 10
+    timeoutSeconds: 5
+    periodSeconds: 5
+    failureThreshold: 6
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 2500m
+      memory: 4096Mi
+  clusterManagerRef:
+    name: cm
+  monitoringConsoleRef:
+    name: mc
+  licenseManagerRef:
+    name: lm
+  volumes:
+    - name: defaults
+      configMap:
+        name: splunk-ds-defaults
+  defaultsUrl: /mnt/defaults/default.yml

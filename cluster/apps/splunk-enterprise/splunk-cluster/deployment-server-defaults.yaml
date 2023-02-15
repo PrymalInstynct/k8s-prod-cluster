@@ -1,0 +1,206 @@
+# https://github.com/splunk/splunk-ansible/blob/develop/docs/advanced/default.yml.spec.md#example
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: splunk-ds-defaults
+  namespace: splunk-enterprise
+data:
+  default.yml: |
+    ---
+    ansible_post_tasks: []
+    ansible_pre_tasks: []
+    ansible_environment: {}
+    hide_password: false
+    retry_num: 60
+    wait_for_splunk_retry_num: 60
+    shc_sync_retry_num: 60
+    retry_delay: 6
+    splunk_home_ownership_enforcement: true
+    config:
+      baked: default.yml
+      defaults_dir: /mnt/defaults
+      env:
+        headers: null
+        var: SPLUNK_DEFAULTS_URL
+        verify: false
+      host:
+        headers: null
+        url: null
+        verify: false
+      max_delay: 60
+      max_retries: 3
+      max_timeout: 1200
+    splunkbase_username: null
+    splunkbase_password: null
+    splunkbase_token: null
+    cert_prefix: https
+    java_download_url: null
+    java_update_version: null
+    java_version: null
+    dmc_forwarder_monitoring: false
+    dmc_asset_interval: 3,18,33,48 * * * *
+    splunk:
+      role: splunk_deployment_server
+      allow_upgrade: true
+      build_location: null
+      build_url_bearer_token: null
+      license_master_url: null
+      cluster_master_url: null
+      auxiliary_cluster_masters: []
+      deployer_url: null
+      deployment_client:
+        name: null
+      search_head_captain_url: null
+      disable_popups: false
+      preferred_captaincy: false
+      apps_location: []
+      license_uri: null
+      ignore_license: false
+      license_download_dest: /mnt/licenses/enterprise.lic
+      wildcard_license: false
+      admin_user: admin
+      password: null
+      user: splunk
+      group: splunk
+      enable_service: false
+      service_name: null
+      opt: /opt
+      home: /opt/splunk
+      exec: /opt/splunk/bin/splunk
+      pid: /opt/splunk/var/run/splunk/splunkd.pid
+      app_paths:
+        default: /opt/splunk/etc/apps
+        deployment: /opt/splunk/etc/deployment-apps
+        httpinput: /opt/splunk/etc/apps/splunk_httpinput
+        idxc: /opt/splunk/etc/master-apps
+        shc: /opt/splunk/etc/shcluster/apps
+      app_paths_install:
+        default: null
+        deployment:
+          - http://10.10.1.30:7777/splunk-apps.tgz
+        idxc: null
+        shc: null
+      hec:
+        enable: false
+        ssl: false
+        port: 8088
+        token: null
+        cert: null
+        password: null
+      http_enableSSL: 0
+      http_enableSSL_cert: null
+      http_enableSSL_privKey: null
+      http_enableSSL_privKey_password: null
+      http_port: 8000
+      root_endpoint: null
+      s2s:
+        enable: false
+        port: 9997
+        ssl: false
+        cert: null
+        password: null
+        ca: null
+      svc_port: 8089
+      appserver:
+        port: 8065
+      kvstore:
+        port: 8191
+      launch: {}
+      asan: false
+      connection_timeout: 0
+      secret: null
+      pass4SymmKey: null
+      ssl:
+        enable: true
+        cert: null
+        password: null
+        ca: null
+      idxc:
+        label: idxc_label
+        replication_factor: 3
+        replication_port: 9887
+        search_factor: 3
+        pass4SymmKey: null
+        discoveryPass4SymmKey: null
+      multisite_master: null
+      multisite_master_port: 8089
+      multisite_replication_factor_origin: 2
+      multisite_replication_factor_total: 3
+      multisite_search_factor_origin: 1
+      multisite_search_factor_total: 3
+      site: null
+      all_sites: null
+      set_search_peers: true
+      shc:
+        label: shc_label
+        replication_factor: 3
+        replication_port: 9887
+        secret: null
+        pass4SymmKey: null
+        deployer_push_mode: null
+      dfs:
+        enable: false
+        port: 9000
+        dfc_num_slots: 4
+        dfw_num_slots: 10
+        dfw_num_slots_enabled: false
+        spark_master_host: 127.0.0.1
+        spark_master_webui_port: 8080
+      dsp:
+        enable: false
+        server: forwarders.scp.splunk.com:9997
+        cert: null
+        verify: false
+        pipeline_name: null
+        pipeline_desc: null
+        pipeline_spec: null
+      smartstore: null
+      tar_dir: splunk
+      conf:
+        - key: authentication
+          value:
+            directory: /opt/splunk/etc/system/local
+            content:
+              authentication:
+                authType : Splunk
+                passwordHashAlgorithm : SHA512-crypt
+              cacheTiming:
+                userLoginTTL : 0
+                userInfoTTL : 10
+              secrets:
+                filename : gnome_keyring.py
+                python.version : python3
+                namespace : splunk
+              splunk_auth:
+                minPasswordLength : 8
+                minPasswordUppercase : 1
+                minPasswordLowercase : 1
+                minPasswordSpecial : 1
+                minPasswordDigit : 1
+                expirePasswordDays : 60
+                expireAlertDays : 10
+                expireUserAccounts : false
+                forceWeakPasswordChange : false
+                lockoutUsers : true
+                lockoutAttempts : 3
+                lockoutThresholdMins : 5
+                lockoutMins : 0
+                enablePasswordHistory : true
+                passwordHistoryCount : 24
+                constantLoginTime : 0
+                verboseLoginFailMsg : true
+        - key: web
+          value:
+            directory: /opt/splunk/etc/system/local
+            content:
+              settings:
+                login_content : You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n
+        - key: global-banner
+          value:
+            directory: /opt/splunk/etc/system/local
+            content:
+              BANNER_MESSAGE_SINGLETON:
+                global_banner.visible : true
+                global_banner.message : UNCLASSIFED - Side 2
+                global_banner.background_color : red
