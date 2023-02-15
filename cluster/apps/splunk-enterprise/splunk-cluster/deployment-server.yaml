@@ -80,6 +80,8 @@ metadata:
   name: splunk-ds-deployment-server-service
   namespace: splunk-enterprise
 spec:
+  selector:
+    app.kubernetes.io/name: splunk-ds-deployment-server
   type: ClusterIP
   ports:
     - name: http-splunkweb
