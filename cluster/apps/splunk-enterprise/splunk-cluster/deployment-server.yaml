@@ -1,0 +1,54 @@
+---
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: splunk-ds-deployment-server-0
+  namespace: splunk-enterprise
+spec:
+  containers:
+    - env:
+        - name: SPLUNK_START_ARGS
+          value: --accept-license
+        - name: SPLUNK_ROLE
+          value: splunk_deployment_server
+        - name: SPLUNK_APPS_URL
+          value: http://10.10.1.30:7777/splunk-apps.tgz
+        - name: SPLUNK_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: splunk-splunk-enterprise-secret
+              key: password
+      image: docker.io/splunk/splunk:9.0.3-a2
+      imagePullPolicy: IfNotPresent
+      name: splunk-ds-deployment-server-0
+      ports:
+        - containerPort: 8000
+          name: http-splunkweb
+          protocol: TCP
+        - containerPort: 8089
+          name: https-splunkd
+          protocol: TCP
+      resources:
+        requests:
+          cpu: 500m
+          memory: 512Mi
+        limits:
+          cpu: 2500m
+          memory: 4096Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: splunk-ds-deployment-server-service
+  namespace: splunk-enterprise
+spec:
+  type: ClusterIP
+  ports:
+    - name: http-splunkweb
+      port: 8000
+      protocol: TCP
+      targetPort: 8000
+    - name: https-splunkd
+      port: 8089
+      protocol: TCP
+      targetPort: 8089
