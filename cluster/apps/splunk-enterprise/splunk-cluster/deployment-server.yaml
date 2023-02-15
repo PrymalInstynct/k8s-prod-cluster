@@ -1,12 +1,22 @@
 ---
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: splunk-ds-deployment-server-0
   namespace: splunk-enterprise
 spec:
   containers:
-    - env:
+    - name: splunk-ds-deployment-server-0
+      image: docker.io/splunk/splunk:9.0.3-a2
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8000
+          name: http-splunkweb
+          protocol: TCP
+        - containerPort: 8089
+          name: https-splunkd
+          protocol: TCP
+      env:
         - name: SPLUNK_START_ARGS
           value: --accept-license
         - name: SPLUNK_ROLE
@@ -18,16 +28,6 @@ spec:
             secretKeyRef:
               name: splunk-splunk-enterprise-secret
               key: password
-      image: docker.io/splunk/splunk:9.0.3-a2
-      imagePullPolicy: IfNotPresent
-      name: splunk-ds-deployment-server-0
-      ports:
-        - containerPort: 8000
-          name: http-splunkweb
-          protocol: TCP
-        - containerPort: 8089
-          name: https-splunkd
-          protocol: TCP
       resources:
         requests:
           cpu: 500m
