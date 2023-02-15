@@ -11,17 +11,17 @@ spec:
     initialDelaySeconds: 40
     timeoutSeconds: 30
     periodSeconds: 30
-    failureThreshold: 120
+    failureThreshold: 20
   livenessProbe:
     initialDelaySeconds: 30
     timeoutSeconds: 30
     periodSeconds: 30
-    failureThreshold: 30
+    failureThreshold: 6
   readinessProbe:
     initialDelaySeconds: 10
     timeoutSeconds: 5
     periodSeconds: 5
-    failureThreshold: 30
+    failureThreshold: 6
   resources:
     requests:
       cpu: 500m
@@ -47,17 +47,17 @@ spec:
     initialDelaySeconds: 40
     timeoutSeconds: 30
     periodSeconds: 30
-    failureThreshold: 120
+    failureThreshold: 20
   livenessProbe:
     initialDelaySeconds: 30
     timeoutSeconds: 30
     periodSeconds: 30
-    failureThreshold: 30
+    failureThreshold: 6
   readinessProbe:
     initialDelaySeconds: 10
     timeoutSeconds: 5
     periodSeconds: 5
-    failureThreshold: 30
+    failureThreshold: 6
   resources:
     requests:
       cpu: 500m
@@ -111,17 +111,17 @@ spec:
     initialDelaySeconds: 40
     timeoutSeconds: 30
     periodSeconds: 30
-    failureThreshold: 120
+    failureThreshold: 20
   livenessProbe:
     initialDelaySeconds: 30
     timeoutSeconds: 30
     periodSeconds: 30
-    failureThreshold: 30
+    failureThreshold: 6
   readinessProbe:
     initialDelaySeconds: 10
     timeoutSeconds: 5
     periodSeconds: 5
-    failureThreshold: 30
+    failureThreshold: 6
   resources:
     requests:
       cpu: 500m
@@ -148,17 +148,17 @@ spec:
     initialDelaySeconds: 40
     timeoutSeconds: 30
     periodSeconds: 30
-    failureThreshold: 120
+    failureThreshold: 20
   livenessProbe:
     initialDelaySeconds: 30
     timeoutSeconds: 30
     periodSeconds: 30
-    failureThreshold: 30
+    failureThreshold: 6
   readinessProbe:
     initialDelaySeconds: 10
     timeoutSeconds: 5
     periodSeconds: 5
-    failureThreshold: 30
+    failureThreshold: 6
   resources:
     requests:
       cpu: 500m
