@@ -63,10 +63,6 @@ spec:
             limits:
               cpu: 2500m
               memory: 4096Mi
-          securityContext:
-            fsGroup: 41812
-            runAsNonRoot: true
-            runAsUser: 41812
           serviceAccount: default
           serviceAccountName: default
           livenessProbe:
