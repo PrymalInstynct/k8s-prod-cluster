@@ -40,3 +40,32 @@ spec:
       configMap:
         name: splunk-ds-defaults
   defaultsUrl: /mnt/defaults/default.yml
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
+    external-dns.home.arpa/enabled: "true"
+    hajimari.io/enable: "true"
+    hajimari.io/appName: "Splunk-DS"
+    hajimari.io/icon: "mdi:splunk"
+  name: splunk-ds-ingress
+  namespace: splunk-enterprise
+spec:
+  rules:
+    - host: "deploy.${SECRET_DOMAIN}"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: splunk-ds-standalone-service
+                port:
+                  number: 8000
+  tls:
+    - hosts:
+        - "deploy.${SECRET_DOMAIN}"
+      secretName: splunk-ds-tls
