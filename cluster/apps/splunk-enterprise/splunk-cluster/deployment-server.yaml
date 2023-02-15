@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/instance: splunk-ds-deployment-server
-      app.kubernetes.io/name: splunk-ds-deployment-server
+      app.kubernetes.io/name: deployment-server
   template:
     metadata:
       labels:
