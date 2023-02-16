@@ -76,7 +76,7 @@ spec:
                 name: splunk-ds-standalone-service
                 port:
                   number: 8089
-            path: /.well-known
+            path: /
             pathType: Prefix
   tls:
     - hosts:
