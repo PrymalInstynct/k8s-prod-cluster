@@ -38,6 +38,9 @@ spec:
         name: splunk-licenses
   licenseUrl: /mnt/licenses/enterprise.lic
   defaultsUrl: /mnt/defaults/default.yml
+  extraEnv:
+    - name: SPLUNK_ROLE
+      value: splunk_deployment_server
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
