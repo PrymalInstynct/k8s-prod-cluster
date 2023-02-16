@@ -73,7 +73,7 @@ spec:
             pathType: Prefix
           - backend:
               service:
-                name: splunk-ds-standalone-service
+                name: splunk-ds-standalone-headless
                 port:
                   number: 8089
             path: /
