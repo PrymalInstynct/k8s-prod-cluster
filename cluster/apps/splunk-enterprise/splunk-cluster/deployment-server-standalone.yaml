@@ -88,7 +88,7 @@ spec:
     - host: "deploy.${SECRET_DOMAIN}"
       http:
         paths:
-          - path: /
+          - path: /services/apps/local
             pathType: Prefix
             backend:
               service:
