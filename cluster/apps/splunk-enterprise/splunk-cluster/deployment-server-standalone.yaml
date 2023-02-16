@@ -69,8 +69,8 @@ spec:
                 name: splunk-ds-standalone-service
                 port:
                   number: 8000
-              path: /en-US
-              pathType: Prefix
+            path: /en-US
+            pathType: Prefix
           - backend:
               service:
                 name: splunk-standalone-standalone-headless
