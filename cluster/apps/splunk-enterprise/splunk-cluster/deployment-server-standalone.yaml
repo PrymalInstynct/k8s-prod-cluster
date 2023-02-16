@@ -71,13 +71,13 @@ spec:
                   number: 8000
             path: /en-US
             pathType: Prefix
-          - backend:
-              service:
-                name: splunk-ds-standalone-headless
-                port:
-                  number: 8089
-            path: /
-            pathType: Prefix
+          # - backend:
+          #     service:
+          #       name: splunk-ds-standalone-headless
+          #       port:
+          #         number: 8089
+          #   path: /
+          #   pathType: Prefix
   tls:
     - hosts:
         - "deploy.${SECRET_DOMAIN}"
