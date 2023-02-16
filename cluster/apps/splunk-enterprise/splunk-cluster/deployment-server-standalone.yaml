@@ -59,7 +59,7 @@ spec:
     - host: "deploy.${SECRET_DOMAIN}"
       http:
         paths:
-          - path: /
+          - path: /web
             pathType: Prefix
             backend:
               service:
