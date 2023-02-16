@@ -112,7 +112,7 @@ data:
       secret: null
       pass4SymmKey: null
       ssl:
-        enable: true
+        enable: false
         cert: null
         password: null
         ca: null
@@ -204,3 +204,11 @@ data:
                 global_banner.visible : true
                 global_banner.message : UNCLASSIFED - Side 2
                 global_banner.background_color : red
+        - key: serverclass
+          value:
+            directory: /opt/splunk/etc/system/local
+            content:
+              serverClass:all:
+                whitelist.0 : *
+              serverClass:all:app:Splunk_TA_nix:
+                restartSplunkd : true

@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   # - deploy-cluster.yaml
   # - deployment-server-deployment.yaml
-  - deployment-server-standalone.yaml
+  # - deployment-server-standalone.yaml
   # - ingress.yaml
   - deployment-server-defaults.yaml
   - license.sops.yaml
