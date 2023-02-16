@@ -66,6 +66,13 @@ spec:
                 name: splunk-ds-standalone-service
                 port:
                   number: 8000
+          - path: /splunkd
+            pathType: Prefix
+            backend:
+              service:
+                name: splunk-ds-standalone-service
+                port:
+                  number: 8089
   tls:
     - hosts:
         - "deploy.${SECRET_DOMAIN}"
