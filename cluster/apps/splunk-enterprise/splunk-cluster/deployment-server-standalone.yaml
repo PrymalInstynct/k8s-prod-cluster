@@ -47,35 +47,11 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-production"
-    external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-    external-dns.home.arpa/enabled: "true"
-    hajimari.io/enable: "true"
-    hajimari.io/appName: "Splunk-DS-WEB"
-    hajimari.io/icon: "mdi:splunk"
-  name: splunk-dsw-ingress
-  namespace: splunk-enterprise
-spec:
-  rules:
-    - host: "deploy-web.${SECRET_DOMAIN}"
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: splunk-ds-standalone-service
-                port:
-                  number: 8000
-  tls:
-    - hosts:
-        - "deploy-web.${SECRET_DOMAIN}"
-      secretName: splunk-dsw-tls
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-production"
+    nginx.org/client-body-buffer-size: 100M
+    nginx.org/client-max-body-size: "0"
+    nginx.org/server-snippets: |
+      client_body_buffer_size 100m;
+    nginx.org/ssl-services: splunk-standalone-standalone-headless
     external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
     external-dns.home.arpa/enabled: "true"
     hajimari.io/enable: "true"
@@ -88,13 +64,20 @@ spec:
     - host: "deploy.${SECRET_DOMAIN}"
       http:
         paths:
-          - path: /services/apps/local
-            pathType: Prefix
-            backend:
+          - backend:
               service:
                 name: splunk-ds-standalone-service
                 port:
+                  number: 8000
+              path: /en-US
+              pathType: Prefix
+          - backend:
+              service:
+                name: splunk-standalone-standalone-headless
+                port:
                   number: 8089
+            path: /.well-known
+            pathType: Prefix
   tls:
     - hosts:
         - "deploy.${SECRET_DOMAIN}"
