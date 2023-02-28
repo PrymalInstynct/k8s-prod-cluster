@@ -5,5 +5,5 @@ resources:
   - namespace.yaml
   - descheduler
   - echo-server
-  # - hajimari
+  - hajimari
   - reloader
