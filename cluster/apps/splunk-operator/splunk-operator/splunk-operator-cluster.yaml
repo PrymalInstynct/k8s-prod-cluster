@@ -47991,7 +47991,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
-        image: splunk/splunk-operator:2.2.0
+        image: splunk/splunk-operator:2.2.1
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
