@@ -45,7 +45,7 @@ spec:
       image:
         repository: docker.io/splunk/splunk-operator
         pullPolicy: IfNotPresent
-        tag: 2.2.0@sha256:c64846ebd3393134d2a4cc50ff644622e231169d0941291b4f31ec0791335cbd
+        tag: 2.2.1@sha256:b10a71ad2c8d6bd5fb0f91762cd85a09b5fc43f9cae0c6195f989b8531a8505f
       imagePullSecrets: []
       clusterWideAccess: true
       watchNamespaces: ""
