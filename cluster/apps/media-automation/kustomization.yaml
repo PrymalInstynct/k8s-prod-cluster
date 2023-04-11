@@ -7,6 +7,6 @@ resources:
   - radarr-hd
   - radarr-uhd
   - sonarr
-  - sonarr-uhd
+  # - sonarr-uhd
   - unpackerr-hd
-  - unpackerr-uhd
+  # - unpackerr-uhd
