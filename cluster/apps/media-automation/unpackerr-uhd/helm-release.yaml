@@ -28,6 +28,8 @@ spec:
       imagePullPolicy: Always
     env:
       TZ: "${TIMEZONE}"
+      UN_SONARR_0_URL: http://sonarr-uhd.media-automation.svc.cluster.local
+      UN_SONARR_0_PATHS_0: /complete/sonarr-uhd
       UN_RADARR_0_URL: http://radarr-uhd.media-automation.svc.cluster.local
       UN_RADARR_0_PATHS_0: /complete/radarr-uhd
     envFrom:
