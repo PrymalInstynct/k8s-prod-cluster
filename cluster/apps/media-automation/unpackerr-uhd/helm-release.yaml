@@ -25,6 +25,7 @@ spec:
     image:
       repository: ghcr.io/onedr0p/unpackerr
       tag: 0.11.1@sha256:8aa2e192f27fe2f6c22b4c73ec780507f2b26cfed26d4c906b1852f53a18d27d
+      imagePullPolicy: Always
     env:
       TZ: "${TIMEZONE}"
       UN_RADARR_0_URL: http://radarr-uhd.media-automation.svc.cluster.local
