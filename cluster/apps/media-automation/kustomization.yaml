@@ -9,4 +9,4 @@ resources:
   - sonarr
   - sonarr-uhd
   - unpackerr-hd
-  # - unpackerr-uhd
+  - unpackerr-uhd
