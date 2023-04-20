@@ -8,5 +8,5 @@ resources:
   - radarr-uhd
   - sonarr
   - sonarr-uhd
-  - unpackerr-hd
+  # - unpackerr-hd
   - unpackerr-uhd
