@@ -33,7 +33,7 @@ spec:
       image:
         repository: gcr.io/kubebuilder/kube-rbac-proxy
         pullPolicy: IfNotPresent
-        tag: "v0.14.0@sha256:e2670fb55b3211fb101f17afa3d81ba816d7c0b76ed31bd3d93fa2affb491595"
+        tag: "v0.14.1@sha256:d8609546ade59715fe90f4c4d335e4ff0813808c28a2fa024b8791f203886fee"
       resources:
         limits:
           cpu: 500m
