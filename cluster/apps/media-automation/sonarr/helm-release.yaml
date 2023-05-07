@@ -29,7 +29,7 @@ spec:
       type: statefulset
     image:
       repository: ghcr.io/onedr0p/sonarr-develop
-      tag: 4.0.0.470@sha256:2a92bf96cf5ea1e212a236fd1e644f289e78127caecd54bdec414f3a5c9d4665
+      tag: 4.0.0.474@sha256:6bdd163a3d5a3be7457a116690189efcc0853e4c7fdb72864e62ae74ed10245b
     env:
       TZ: "${TIMEZONE}"
       SONARR__INSTANCE_NAME: Sonarr
